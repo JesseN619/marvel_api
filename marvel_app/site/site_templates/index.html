@@ -7,17 +7,34 @@
     </symbol>
 </svg>
 {% with messages = get_flashed_messages(with_categories = true) %}
-    {% if messages %}
-        {% for cat, msg in messages %}
-            {% if cat == 'auth-success' %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-                    {{ msg }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+{% if messages %}
+{% for cat, msg in messages %}
+{% if cat == 'auth-success' %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+        <use xlink:href="#check-circle-fill" />
+    </svg>
+    {{ msg }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
 {% endwith %}
-<h1>Home page goes here</h1>
+<div class="row">
+    <div class="col-md-7 mx-auto">
+        <h1 class="text-center">Welcome to Jesse's Marvel CRUD RESTful Web API</h1>
+        <p class="text-center">You can store your favorite Marvel characters 
+            and information about them, including "name", "description", 
+            "comics_appeared_in" (an integer), and "super_power". 
+        </p>
+        <ul>
+            <li>Sign up to get started.</li>
+            <li>After you sign in, click 'Profile' then 'Details' to get your personal token.</li>
+            <li>CRUD operations are available via marvel-api-jn.herokuapp.com/api/characters.</li>
+            <li>Use header: "x-access-token" and value: "Bearer your-token" where your-token is your personal token.</li>
+            <li>Use JSON to create or update characters.</li>
+        </ul>
+    </div>
+</div>
 {% endblock content %}

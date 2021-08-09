@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Profile page goes here</h1>
+
+<div class="row">
+    <div class="col-12 col-md-9 mx-auto">
+        <h3 class="mt-5 mb-4">{{ current_user.name }}'s profile details:</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Email:<br/>{{ current_user.email }}</li>
+            <li class="list-group-item">Token:<br/>{{ current_user.token }}</li>
+        </ul>
+    </div>
+</div>
+
 {% endblock content %}

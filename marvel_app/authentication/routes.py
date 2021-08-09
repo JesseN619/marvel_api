@@ -12,6 +12,11 @@ def signup():
         name = form.name.data
         email = form.email.data
         password = form.password.data
+
+        exists = db.session.query(User.email).filter_by(email = email).first()
+        if exists:
+            flash(f'That email address already exists. Please sign in if that is your email address. Otherwise, sign up with a different email address.', 'signup-fail')
+            return redirect(url_for('auth.signup'))
         
         new_user = User(name, email, password)
         db.session.add(new_user)

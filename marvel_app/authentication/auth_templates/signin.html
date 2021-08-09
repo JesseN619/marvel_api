@@ -29,7 +29,7 @@
     {% endif %}
 {% endwith %}
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5 mx-auto">
         <h1>Sign In</h1>
         <form method="POST">
             {{ form.hidden_tag() }}
@@ -38,7 +38,7 @@
                     {{ form.email.label }}
                     {{ form.email(class = "form-control", placeholder = "Email") }}
                 </fieldset>
-                <fieldset>
+                <fieldset class="mb-3">
                     {{ form.password.label }}
                     {{ form.password(class = "form-control", placeholder = "Password") }}
                 </fieldset>

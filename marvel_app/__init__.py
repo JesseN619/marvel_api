@@ -1,9 +1,12 @@
 from flask import Flask
 from config import Config
 from .authentication.routes import auth
+from .api.routes import api
 from .site.routes import site
-from .models import db, User, login_manager
+from .models import db, login_manager, ma
 from flask_migrate import Migrate
+from .helpers import JSONEncoder
+from flask_cors import CORS
 
 app = Flask(__name__)
 
@@ -12,7 +15,13 @@ db.init_app(app)
 login_manager.init_app(app)
 
 login_manager.login_view = 'auth.signin'
+ma.init_app(app)
 
 migrate = Migrate(app, db)
 app.register_blueprint(site)
 app.register_blueprint(auth)
+app.register_blueprint(api)
+
+json_encoder = JSONEncoder()
+
+CORS(app)
